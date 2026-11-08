@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071426"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><title>NEXORA — Multiplayer World</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="glow g1"></div><div class="glow g2"></div>
+<section id="authScreen" class="auth-wrap">
+  <div class="auth-art"><div class="brand"><span class="brand-icon">N</span><span>NEXORA<small>MULTIPLAYER WORLD</small></span></div>
+    <div class="art-copy"><span class="eyebrow">A WORLD WITHOUT LIMITS</span><h1>Explore together.<br><em>Discover more.</em></h1><p>Masuki dunia futuristik, temui pemain lain, jelajahi pulau, dan selesaikan aktivitas bersama.</p>
+      <div class="feature-row"><span>✦ REAL-TIME WORLD</span><span>⌖ LIVE PLAYERS</span><span>◈ SOCIAL ADVENTURE</span></div></div>
+    <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="art-bottom">SECTOR 07 <span>● WORLD ONLINE</span></div>
+  </div>
+  <div class="auth-panel"><div class="mobile-brand brand"><span class="brand-icon">N</span><span>NEXORA<small>MULTIPLAYER WORLD</small></span></div>
+    <div class="auth-heading"><span class="eyebrow">PLAYER ACCESS</span><h2 id="authTitle">Welcome back.</h2><p id="authSubtitle">Login untuk melanjutkan petualanganmu.</p></div>
+    <div class="tabs"><button class="tab active" id="loginTab">SIGN IN</button><button class="tab" id="registerTab">CREATE ACCOUNT</button></div>
+    <form id="authForm">
+      <label>USERNAME</label><input id="username" autocomplete="username" minlength="3" maxlength="16" placeholder="Contoh: Pioneer_07" required>
+      <label>PASSWORD</label><div class="password-wrap"><input id="password" type="password" autocomplete="current-password" placeholder="Minimal 8 karakter" required><button type="button" id="togglePassword">SHOW</button></div>
+      <div id="confirmWrap" class="hidden"><label>CONFIRM PASSWORD</label><input id="confirmPassword" type="password" autocomplete="new-password" placeholder="Ulangi password"></div>
+      <div class="auth-error" id="authError"></div>
+      <button class="primary" id="authSubmit" type="submit">ENTER WORLD <span>→</span></button>
+    </form>
+    <p class="auth-note">Dengan masuk, kamu setuju bermain dengan sopan dan menghargai pemain lain.</p>
+  </div>
+</section>
+
+<section id="gameScreen" class="game-screen hidden">
+  <header class="topbar"><div class="brand"><span class="brand-icon">N</span><span>NEXORA<small>MULTIPLAYER WORLD</small></span></div><div class="world-status"><i></i> WORLD LIVE <span id="onlineCount">1 PLAYER</span></div><div class="user-area"><span id="userLabel">PLAYER</span><button id="logoutBtn" class="logout">LOG OUT ↗</button></div></header>
+  <main class="game-layout">
+    <section class="play-column"><div class="welcome"><div><span class="eyebrow">NEBULA FRONTIER / OPEN WORLD</span><h1>Welcome, <em id="welcomeName">Pioneer</em></h1><p>Jelajahi pulau bersama pemain lain. Tidak ada kuis—hanya eksplorasi dan aktivitas.</p></div><div class="sector">SECTOR <b>07</b></div></div>
+      <div class="world-frame"><canvas id="world" width="1200" height="740"></canvas><div class="world-hud"><span>⌖ NEBULA ISLAND</span><span id="coords">X 900 · Y 550</span></div><div class="world-bottom"><span class="desktop-hint">WASD / ARROW KEYS TO MOVE</span><span class="mobile-hint">TOUCH D-PAD TO MOVE</span><span>MOVE · EXPLORE · MEET</span></div><div class="touch-controls" id="touchControls" aria-label="Kontrol gerak"><button class="touch-up" data-dir="up" aria-label="Atas">▲</button><button class="touch-left" data-dir="left" aria-label="Kiri">◀</button><button class="touch-down" data-dir="down" aria-label="Bawah">▼</button><button class="touch-right" data-dir="right" aria-label="Kanan">▶</button></div></div>
+      <div class="activity-row"><div class="activity"><span class="activity-icon">⌖</span><div><b>Explore freely</b><small>Temukan tempat tersembunyi</small></div></div><div class="activity"><span class="activity-icon">✧</span><div><b>Meet players</b><small>Jelajahi dunia bersama</small></div></div><div class="activity"><span class="activity-icon">◇</span><div><b>Discover relics</b><small>Kumpulkan artefak dunia</small></div></div></div>
+    </section>
+    <aside class="right-panel"><div class="panel-head"><span>PLAYERS IN WORLD</span><span class="live">● LIVE</span></div><div id="playerList" class="player-list"></div>
+      <div class="panel-head chat-head"><span>WORLD CHAT</span><span>↗</span></div><div id="chatMessages" class="chat-messages"><div class="system-msg">Welcome to Nebula Frontier. Say hello!</div></div><form id="chatForm" class="chat-form"><input id="chatInput" maxlength="120" placeholder="Kirim pesan..." autocomplete="off"><button>↑</button></form>
+      <div class="panel-head emote-head">QUICK EMOTES</div><div class="emotes"><button data-emote="wave">👋 Wave</button><button data-emote="spark">✦ Spark</button><button data-emote="dance">♫ Dance</button></div>
+      <button id="leaveWorld" class="leave-btn">SIGN OUT OF WORLD</button>
+    </aside>
+  </main>
+  <footer class="game-footer"><span>© 2026 NEXORA WORLD</span><span>CONNECTED VIA REAL-TIME SERVER <b>●</b></span></footer>
+</section>
+<div id="toast" class="toast"></div>
+<script src="/socket.io/socket.io.js"></script><script src="app.js"></script>
+</body></html>
